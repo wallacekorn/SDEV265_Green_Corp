@@ -16,5 +16,11 @@ namespace Recipe_Management_System
         {
             InitializeComponent();
         }
+
+        private void instructionsExitButton_Click(object sender, EventArgs e)
+        {
+            // Close the form on click
+            this.Close();
+        }
     }
 }

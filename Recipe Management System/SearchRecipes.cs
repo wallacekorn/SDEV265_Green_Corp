@@ -16,5 +16,20 @@ namespace Recipe_Management_System
         {
             InitializeComponent();
         }
+
+        private void searchExitButton_Click(object sender, EventArgs e)
+        {
+            // Close the form on click
+            this.Close();
+        }
+
+        private void searchCRUDbutton_Click(object sender, EventArgs e)
+        {
+            // Create an instance of Search page
+            SingleRecipe SearchRecipePage = new SingleRecipe();
+
+            // Show the Search Page
+            SearchRecipePage.Show();
+        }
     }
 }

@@ -28,18 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Instructions));
+            instructionsHeader = new Label();
+            label1 = new Label();
+            instructionsExitButton = new Button();
+            instructionsImage = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)instructionsImage).BeginInit();
             SuspendLayout();
+            // 
+            // instructionsHeader
+            // 
+            instructionsHeader.AutoSize = true;
+            instructionsHeader.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            instructionsHeader.Location = new Point(12, 117);
+            instructionsHeader.Name = "instructionsHeader";
+            instructionsHeader.Size = new Size(337, 32);
+            instructionsHeader.TabIndex = 0;
+            instructionsHeader.Text = "How to Use This Application";
+            instructionsHeader.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(49, 168);
+            label1.Name = "label1";
+            label1.Size = new Size(591, 15);
+            label1.TabIndex = 1;
+            label1.Text = "To Load a list of Recipes and their directions/ingredients, select File > Load and find your recipes file recipes.csv\r\n";
+            // 
+            // instructionsExitButton
+            // 
+            instructionsExitButton.Location = new Point(355, 324);
+            instructionsExitButton.Name = "instructionsExitButton";
+            instructionsExitButton.Size = new Size(90, 26);
+            instructionsExitButton.TabIndex = 2;
+            instructionsExitButton.Text = "Exit";
+            instructionsExitButton.UseVisualStyleBackColor = true;
+            instructionsExitButton.Click += instructionsExitButton_Click;
+            // 
+            // instructionsImage
+            // 
+            instructionsImage.Image = (Image)resources.GetObject("instructionsImage.Image");
+            instructionsImage.Location = new Point(356, 199);
+            instructionsImage.Name = "instructionsImage";
+            instructionsImage.Size = new Size(88, 101);
+            instructionsImage.SizeMode = PictureBoxSizeMode.CenterImage;
+            instructionsImage.TabIndex = 3;
+            instructionsImage.TabStop = false;
             // 
             // Instructions
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(instructionsImage);
+            Controls.Add(instructionsExitButton);
+            Controls.Add(label1);
+            Controls.Add(instructionsHeader);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Instructions";
             Text = "RMS - Instructions";
+            ((System.ComponentModel.ISupportInitialize)instructionsImage).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label instructionsHeader;
+        private Label label1;
+        private Button instructionsExitButton;
+        private PictureBox instructionsImage;
     }
 }
