@@ -40,7 +40,7 @@
             // 
             instructionsHeader.AutoSize = true;
             instructionsHeader.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            instructionsHeader.Location = new Point(12, 117);
+            instructionsHeader.Location = new Point(12, 140);
             instructionsHeader.Name = "instructionsHeader";
             instructionsHeader.Size = new Size(337, 32);
             instructionsHeader.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(49, 168);
+            label1.Location = new Point(49, 191);
             label1.Name = "label1";
             label1.Size = new Size(591, 15);
             label1.TabIndex = 1;
@@ -58,9 +58,9 @@
             // 
             // instructionsExitButton
             // 
-            instructionsExitButton.Location = new Point(355, 324);
+            instructionsExitButton.Location = new Point(582, 12);
             instructionsExitButton.Name = "instructionsExitButton";
-            instructionsExitButton.Size = new Size(90, 26);
+            instructionsExitButton.Size = new Size(83, 25);
             instructionsExitButton.TabIndex = 2;
             instructionsExitButton.Text = "Exit";
             instructionsExitButton.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             // instructionsImage
             // 
             instructionsImage.Image = (Image)resources.GetObject("instructionsImage.Image");
-            instructionsImage.Location = new Point(356, 199);
+            instructionsImage.Location = new Point(298, 13);
             instructionsImage.Name = "instructionsImage";
             instructionsImage.Size = new Size(88, 101);
             instructionsImage.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -81,7 +81,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(677, 450);
             Controls.Add(instructionsImage);
             Controls.Add(instructionsExitButton);
             Controls.Add(label1);

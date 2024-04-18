@@ -39,7 +39,7 @@
             // 
             // searchExitButton
             // 
-            searchExitButton.Location = new Point(180, 354);
+            searchExitButton.Location = new Point(354, 12);
             searchExitButton.Name = "searchExitButton";
             searchExitButton.Size = new Size(75, 23);
             searchExitButton.TabIndex = 0;

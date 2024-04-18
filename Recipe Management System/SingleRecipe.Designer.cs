@@ -39,15 +39,19 @@
             mealTypeLabel = new Label();
             mealTypeDropdown = new ComboBox();
             nameTextBox = new TextBox();
-            listBox1 = new ListBox();
-            listBox2 = new ListBox();
+            directionsDataGrid = new DataGridView();
+            directionsColumn = new DataGridViewTextBoxColumn();
+            ingredientsDataGrid = new DataGridView();
+            ingredientsColumn = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)directionsDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // recipeExitButton
             // 
-            recipeExitButton.Location = new Point(350, 356);
+            recipeExitButton.Location = new Point(665, 12);
             recipeExitButton.Name = "recipeExitButton";
-            recipeExitButton.Size = new Size(100, 30);
+            recipeExitButton.Size = new Size(80, 24);
             recipeExitButton.TabIndex = 0;
             recipeExitButton.Text = "Exit";
             recipeExitButton.UseVisualStyleBackColor = true;
@@ -55,7 +59,7 @@
             // 
             // deleteRecipeButton
             // 
-            deleteRecipeButton.Location = new Point(470, 304);
+            deleteRecipeButton.Location = new Point(552, 370);
             deleteRecipeButton.Name = "deleteRecipeButton";
             deleteRecipeButton.Size = new Size(100, 30);
             deleteRecipeButton.TabIndex = 1;
@@ -64,16 +68,17 @@
             // 
             // editRecipeButton
             // 
-            editRecipeButton.Location = new Point(350, 304);
+            editRecipeButton.Location = new Point(427, 370);
             editRecipeButton.Name = "editRecipeButton";
             editRecipeButton.Size = new Size(100, 30);
             editRecipeButton.TabIndex = 2;
             editRecipeButton.Text = "Edit";
             editRecipeButton.UseVisualStyleBackColor = true;
+            editRecipeButton.Click += editRecipeButton_Click;
             // 
             // saveRecipeButton
             // 
-            saveRecipeButton.Location = new Point(230, 304);
+            saveRecipeButton.Location = new Point(302, 370);
             saveRecipeButton.Name = "saveRecipeButton";
             saveRecipeButton.Size = new Size(100, 30);
             saveRecipeButton.TabIndex = 3;
@@ -83,7 +88,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new Point(296, 61);
+            nameLabel.Location = new Point(106, 91);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(42, 15);
             nameLabel.TabIndex = 4;
@@ -92,7 +97,7 @@
             // ingredientsLabel
             // 
             ingredientsLabel.AutoSize = true;
-            ingredientsLabel.Location = new Point(206, 137);
+            ingredientsLabel.Location = new Point(86, 137);
             ingredientsLabel.Name = "ingredientsLabel";
             ingredientsLabel.Size = new Size(69, 15);
             ingredientsLabel.TabIndex = 5;
@@ -101,7 +106,7 @@
             // directionsLabel
             // 
             directionsLabel.AutoSize = true;
-            directionsLabel.Location = new Point(410, 137);
+            directionsLabel.Location = new Point(302, 137);
             directionsLabel.Name = "directionsLabel";
             directionsLabel.Size = new Size(63, 15);
             directionsLabel.TabIndex = 6;
@@ -110,7 +115,7 @@
             // mealTypeLabel
             // 
             mealTypeLabel.AutoSize = true;
-            mealTypeLabel.Location = new Point(296, 100);
+            mealTypeLabel.Location = new Point(375, 90);
             mealTypeLabel.Name = "mealTypeLabel";
             mealTypeLabel.Size = new Size(63, 15);
             mealTypeLabel.TabIndex = 7;
@@ -118,45 +123,81 @@
             // 
             // mealTypeDropdown
             // 
+            mealTypeDropdown.Enabled = false;
             mealTypeDropdown.FormattingEnabled = true;
-            mealTypeDropdown.Location = new Point(384, 97);
+            mealTypeDropdown.Items.AddRange(new object[] { "Breakfast", "Lunch", "Dinner", "Dessert" });
+            mealTypeDropdown.Location = new Point(463, 87);
             mealTypeDropdown.Name = "mealTypeDropdown";
             mealTypeDropdown.Size = new Size(121, 23);
             mealTypeDropdown.TabIndex = 8;
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(384, 57);
+            nameTextBox.Location = new Point(194, 87);
             nameTextBox.Name = "nameTextBox";
+            nameTextBox.ReadOnly = true;
             nameTextBox.Size = new Size(121, 23);
             nameTextBox.TabIndex = 9;
             // 
-            // listBox1
+            // directionsDataGrid
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(206, 154);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(173, 124);
-            listBox1.TabIndex = 10;
+            directionsDataGrid.AllowUserToOrderColumns = true;
+            directionsDataGrid.BackgroundColor = SystemColors.ButtonFace;
+            directionsDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            directionsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            directionsDataGrid.Columns.AddRange(new DataGridViewColumn[] { directionsColumn });
+            directionsDataGrid.GridColor = SystemColors.Window;
+            directionsDataGrid.Location = new Point(302, 155);
+            directionsDataGrid.Name = "directionsDataGrid";
+            directionsDataGrid.ReadOnly = true;
+            directionsDataGrid.RowHeadersVisible = false;
+            directionsDataGrid.RowHeadersWidth = 20;
+            directionsDataGrid.ScrollBars = ScrollBars.Horizontal;
+            directionsDataGrid.Size = new Size(350, 198);
+            directionsDataGrid.TabIndex = 10;
             // 
-            // listBox2
+            // directionsColumn
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(410, 154);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(184, 124);
-            listBox2.TabIndex = 11;
+            directionsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            directionsColumn.DividerWidth = 1;
+            directionsColumn.HeaderText = "";
+            directionsColumn.MinimumWidth = 346;
+            directionsColumn.Name = "directionsColumn";
+            directionsColumn.ReadOnly = true;
+            directionsColumn.Resizable = DataGridViewTriState.False;
+            directionsColumn.Width = 346;
+            // 
+            // ingredientsDataGrid
+            // 
+            ingredientsDataGrid.BackgroundColor = SystemColors.ButtonFace;
+            ingredientsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ingredientsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ingredientsColumn });
+            ingredientsDataGrid.GridColor = SystemColors.Window;
+            ingredientsDataGrid.Location = new Point(86, 155);
+            ingredientsDataGrid.Name = "ingredientsDataGrid";
+            ingredientsDataGrid.ReadOnly = true;
+            ingredientsDataGrid.RowHeadersVisible = false;
+            ingredientsDataGrid.Size = new Size(186, 245);
+            ingredientsDataGrid.TabIndex = 11;
+            // 
+            // ingredientsColumn
+            // 
+            ingredientsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ingredientsColumn.DividerWidth = 1;
+            ingredientsColumn.HeaderText = "";
+            ingredientsColumn.MinimumWidth = 134;
+            ingredientsColumn.Name = "ingredientsColumn";
+            ingredientsColumn.ReadOnly = true;
+            ingredientsColumn.Resizable = DataGridViewTriState.False;
             // 
             // SingleRecipe
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(800, 450);
-            Controls.Add(listBox2);
-            Controls.Add(listBox1);
+            ClientSize = new Size(757, 445);
+            Controls.Add(ingredientsDataGrid);
+            Controls.Add(directionsDataGrid);
             Controls.Add(nameTextBox);
             Controls.Add(mealTypeDropdown);
             Controls.Add(mealTypeLabel);
@@ -170,6 +211,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SingleRecipe";
             Text = "RMS - Single Recipe";
+            ((System.ComponentModel.ISupportInitialize)directionsDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,7 +229,9 @@
         private Label mealTypeLabel;
         private ComboBox mealTypeDropdown;
         private TextBox nameTextBox;
-        private ListBox listBox1;
-        private ListBox listBox2;
+        private DataGridView directionsDataGrid;
+        private DataGridView ingredientsDataGrid;
+        private DataGridViewTextBoxColumn directionsColumn;
+        private DataGridViewTextBoxColumn ingredientsColumn;
     }
 }

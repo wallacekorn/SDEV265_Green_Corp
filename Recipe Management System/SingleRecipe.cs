@@ -22,5 +22,24 @@ namespace Recipe_Management_System
             // Close the form on click
             this.Close();
         }
+
+        private void editRecipeButton_Click(object sender, EventArgs e)
+        {
+            // Toggles the Read-only nature of the input fields on button press
+            ingredientsDataGrid.ReadOnly = !ingredientsDataGrid.ReadOnly;
+            directionsDataGrid.ReadOnly = !directionsDataGrid.ReadOnly;
+            nameTextBox.ReadOnly = !nameTextBox.ReadOnly;
+            mealTypeDropdown.Enabled = !mealTypeDropdown.Enabled;
+
+            // Switches the button text to match the current state
+            if (editRecipeButton.Text == "Edit")
+            {
+                editRecipeButton.Text = "Lock";
+            }
+            else
+            {
+                editRecipeButton.Text = "Edit";
+            }
+        }
     }
 }

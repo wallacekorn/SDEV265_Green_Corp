@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeScreen));
-            comboBox1 = new ComboBox();
+            recipeComboBox = new ComboBox();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             loadMenuItem = new ToolStripMenuItem();
@@ -39,17 +39,19 @@
             searchButton = new Button();
             welcomeImage = new PictureBox();
             newRecipeButton = new Button();
+            label1 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)welcomeImage).BeginInit();
             SuspendLayout();
             // 
-            // comboBox1
+            // recipeComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(200, 335);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(156, 23);
-            comboBox1.TabIndex = 0;
+            recipeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            recipeComboBox.FormattingEnabled = true;
+            recipeComboBox.Location = new Point(200, 335);
+            recipeComboBox.Name = "recipeComboBox";
+            recipeComboBox.Size = new Size(156, 23);
+            recipeComboBox.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -131,23 +133,34 @@
             newRecipeButton.UseVisualStyleBackColor = true;
             newRecipeButton.Click += newRecipeButton_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(286, 313);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Select a Recipe";
+            // 
             // WelcomeScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(657, 410);
+            Controls.Add(label1);
             Controls.Add(newRecipeButton);
             Controls.Add(welcomeImage);
             Controls.Add(searchButton);
             Controls.Add(recipeCRUDbutton);
             Controls.Add(instructionsButton);
-            Controls.Add(comboBox1);
+            Controls.Add(recipeComboBox);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "WelcomeScreen";
             Text = "Recipe Management System - Welcome";
+            Load += WelcomeScreen_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)welcomeImage).EndInit();
@@ -157,7 +170,7 @@
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox recipeComboBox;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem loadMenuItem;
@@ -167,5 +180,6 @@
         private Button searchButton;
         private PictureBox welcomeImage;
         private Button newRecipeButton;
+        private Label label1;
     }
 }
