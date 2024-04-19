@@ -80,7 +80,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientInactiveCaption;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(677, 450);
             Controls.Add(instructionsImage);
             Controls.Add(instructionsExitButton);

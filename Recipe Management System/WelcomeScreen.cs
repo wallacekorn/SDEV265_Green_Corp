@@ -50,11 +50,39 @@ namespace Recipe_Management_System
 
         private void recipeCRUDbutton_Click(object sender, EventArgs e)
         {
-            // Create an instance of Search page
-            SingleRecipe SingleRecipePage = new SingleRecipe();
+            // Get the selected recipe name from the combo box
+            string selectedRecipeName = recipeComboBox.Text;
 
-            // Show the Search Page
-            SingleRecipePage.Show();
+            if (selectedRecipeName != "")
+            {
+                // Find the matching recipe object in the recipes list
+                Recipe selectedRecipe = null;
+                foreach (Recipe recipe in recipes)
+                {
+                    if (recipe.Name == selectedRecipeName)
+                    {
+                        selectedRecipe = recipe;
+                        break;
+                    }
+                }
+
+                if (selectedRecipe != null)
+                {
+                    // Create an instance of SingleRecipe form and pass the selected recipe object
+                    SingleRecipe singleRecipePage = new SingleRecipe(selectedRecipe);
+
+                    // Show the SingleRecipe form
+                    singleRecipePage.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Selected recipe not found!", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No recipe selected!", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void newRecipeButton_Click(object sender, EventArgs e)

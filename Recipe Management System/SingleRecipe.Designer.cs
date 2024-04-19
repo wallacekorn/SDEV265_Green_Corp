@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingleRecipe));
             recipeExitButton = new Button();
             deleteRecipeButton = new Button();
@@ -142,7 +144,12 @@
             // directionsDataGrid
             // 
             directionsDataGrid.AllowUserToOrderColumns = true;
+            directionsDataGrid.AllowUserToResizeColumns = false;
+            directionsDataGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 192, 255);
+            directionsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             directionsDataGrid.BackgroundColor = SystemColors.ButtonFace;
+            directionsDataGrid.BorderStyle = BorderStyle.Fixed3D;
             directionsDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             directionsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             directionsDataGrid.Columns.AddRange(new DataGridViewColumn[] { directionsColumn });
@@ -169,7 +176,11 @@
             // 
             // ingredientsDataGrid
             // 
+            ingredientsDataGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(192, 192, 255);
+            ingredientsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             ingredientsDataGrid.BackgroundColor = SystemColors.ButtonFace;
+            ingredientsDataGrid.BorderStyle = BorderStyle.Fixed3D;
             ingredientsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ingredientsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ingredientsColumn });
             ingredientsDataGrid.GridColor = SystemColors.Window;
@@ -194,7 +205,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientInactiveCaption;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(757, 445);
             Controls.Add(ingredientsDataGrid);
             Controls.Add(directionsDataGrid);
@@ -211,6 +222,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SingleRecipe";
             Text = "RMS - Single Recipe";
+            Load += SingleRecipe_Load;
             ((System.ComponentModel.ISupportInitialize)directionsDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).EndInit();
             ResumeLayout(false);

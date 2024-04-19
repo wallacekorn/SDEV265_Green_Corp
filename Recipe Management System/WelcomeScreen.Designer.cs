@@ -146,7 +146,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientInactiveCaption;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(657, 410);
             Controls.Add(label1);
             Controls.Add(newRecipeButton);

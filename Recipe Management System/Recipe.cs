@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Recipe_Management_System
 {
@@ -31,12 +32,22 @@ namespace Recipe_Management_System
         // Overrides the ToString function for testing purposes
         public override string ToString()
         {
-            // Combine recipe details into a single string
-            string recipeDetails = $"Name: {Name}\nMeal Type: {MealType}\n\nIngredients:\n";
-            recipeDetails += string.Join("\n", Ingredients.Select((ingredient, index) => $"{index + 1}. {ingredient}"));
-            recipeDetails += "\n\nDirections:\n";
-            recipeDetails += string.Join("\n", Directions.Select((direction, index) => $"{index + 1}. {direction}"));
-            return recipeDetails;
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Name: {Name}");
+            sb.AppendLine($"Meal Type: {MealType}");
+            sb.AppendLine("Ingredients:");
+            foreach (string ingredient in Ingredients)
+            {
+                sb.AppendLine($"- {ingredient}");
+            }
+            sb.AppendLine("Directions:");
+            foreach (string direction in Directions)
+            {
+                sb.AppendLine($"- {direction}");
+            }
+
+            return sb.ToString();
         }
     }
 }
