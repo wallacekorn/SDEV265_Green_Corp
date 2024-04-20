@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Recipe_Management_System
 {
     public partial class WelcomeScreen : Form
@@ -16,11 +18,7 @@ namespace Recipe_Management_System
             // checks to make sure the recipes list is not null(default)
             if (recipes != null)
             {
-                foreach (var recipe in recipes)
-                {
-                    // Adds the recipe names to the combobox
-                    recipeComboBox.Items.Add(recipe.Name);
-                }
+                BuildComboBox(recipes);
             }
         }
 
@@ -69,7 +67,8 @@ namespace Recipe_Management_System
                 if (selectedRecipe != null)
                 {
                     // Create an instance of SingleRecipe form and pass the selected recipe object
-                    SingleRecipe singleRecipePage = new SingleRecipe(selectedRecipe);
+                    // as well as the recipes object list
+                    SingleRecipe singleRecipePage = new SingleRecipe(selectedRecipe, recipes);
 
                     // Show the SingleRecipe form
                     singleRecipePage.Show();
@@ -88,10 +87,22 @@ namespace Recipe_Management_System
         private void newRecipeButton_Click(object sender, EventArgs e)
         {
             // Create an instance of Search page
-            SingleRecipe SingleRecipePage = new SingleRecipe();
+            SingleRecipe SingleRecipePage = new SingleRecipe(null, recipes);
 
             // Show the Search Page
             SingleRecipePage.Show();
+        }
+
+        public void BuildComboBox(List<Recipe> recipes)
+        {
+            // Clear existing items in the combo box
+            recipeComboBox.Items.Clear();
+
+            // Add new items from the provided recipes list
+            foreach (var recipe in recipes)
+            {
+                recipeComboBox.Items.Add(recipe.Name);
+            }
         }
     }
 }

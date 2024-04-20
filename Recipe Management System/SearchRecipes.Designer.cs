@@ -39,9 +39,9 @@
             // 
             // searchExitButton
             // 
-            searchExitButton.Location = new Point(354, 12);
+            searchExitButton.Location = new Point(344, 12);
             searchExitButton.Name = "searchExitButton";
-            searchExitButton.Size = new Size(75, 23);
+            searchExitButton.Size = new Size(85, 25);
             searchExitButton.TabIndex = 0;
             searchExitButton.Text = "Exit";
             searchExitButton.UseVisualStyleBackColor = true;
@@ -51,14 +51,14 @@
             // 
             searchListBox.FormattingEnabled = true;
             searchListBox.ItemHeight = 15;
-            searchListBox.Location = new Point(104, 157);
+            searchListBox.Location = new Point(63, 158);
             searchListBox.Name = "searchListBox";
-            searchListBox.Size = new Size(241, 139);
+            searchListBox.Size = new Size(312, 199);
             searchListBox.TabIndex = 1;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(245, 118);
+            textBox1.Location = new Point(204, 118);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 2;
@@ -66,7 +66,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(93, 121);
+            label1.Location = new Point(63, 121);
             label1.Name = "label1";
             label1.Size = new Size(131, 15);
             label1.TabIndex = 3;
@@ -74,9 +74,10 @@
             // 
             // searchCRUDbutton
             // 
-            searchCRUDbutton.Location = new Point(270, 314);
+            searchCRUDbutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchCRUDbutton.Location = new Point(275, 380);
             searchCRUDbutton.Name = "searchCRUDbutton";
-            searchCRUDbutton.Size = new Size(75, 23);
+            searchCRUDbutton.Size = new Size(100, 30);
             searchCRUDbutton.TabIndex = 4;
             searchCRUDbutton.Text = "View/Edit";
             searchCRUDbutton.UseVisualStyleBackColor = true;
@@ -104,6 +105,7 @@
             Controls.Add(textBox1);
             Controls.Add(searchListBox);
             Controls.Add(searchExitButton);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SearchRecipes";
             Text = "RMS - Search Recipe";

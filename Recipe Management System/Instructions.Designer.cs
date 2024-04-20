@@ -60,7 +60,7 @@
             // 
             instructionsExitButton.Location = new Point(582, 12);
             instructionsExitButton.Name = "instructionsExitButton";
-            instructionsExitButton.Size = new Size(83, 25);
+            instructionsExitButton.Size = new Size(85, 25);
             instructionsExitButton.TabIndex = 2;
             instructionsExitButton.Text = "Exit";
             instructionsExitButton.UseVisualStyleBackColor = true;
@@ -86,6 +86,7 @@
             Controls.Add(instructionsExitButton);
             Controls.Add(label1);
             Controls.Add(instructionsHeader);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Instructions";
             Text = "RMS - Instructions";

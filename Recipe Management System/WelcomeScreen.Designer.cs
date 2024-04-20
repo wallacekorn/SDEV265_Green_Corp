@@ -46,11 +46,15 @@
             // 
             // recipeComboBox
             // 
+            recipeComboBox.DropDownHeight = 160;
             recipeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            recipeComboBox.DropDownWidth = 180;
             recipeComboBox.FormattingEnabled = true;
-            recipeComboBox.Location = new Point(200, 335);
+            recipeComboBox.IntegralHeight = false;
+            recipeComboBox.Location = new Point(192, 338);
             recipeComboBox.Name = "recipeComboBox";
             recipeComboBox.Size = new Size(156, 23);
+            recipeComboBox.Sorted = true;
             recipeComboBox.TabIndex = 0;
             // 
             // menuStrip1
@@ -85,9 +89,10 @@
             // 
             // instructionsButton
             // 
+            instructionsButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             instructionsButton.Location = new Point(161, 256);
             instructionsButton.Name = "instructionsButton";
-            instructionsButton.Size = new Size(100, 30);
+            instructionsButton.Size = new Size(105, 30);
             instructionsButton.TabIndex = 2;
             instructionsButton.Text = "Instructions";
             instructionsButton.UseVisualStyleBackColor = true;
@@ -95,9 +100,10 @@
             // 
             // recipeCRUDbutton
             // 
-            recipeCRUDbutton.Location = new Point(373, 334);
+            recipeCRUDbutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            recipeCRUDbutton.Location = new Point(365, 334);
             recipeCRUDbutton.Name = "recipeCRUDbutton";
-            recipeCRUDbutton.Size = new Size(83, 24);
+            recipeCRUDbutton.Size = new Size(105, 30);
             recipeCRUDbutton.TabIndex = 3;
             recipeCRUDbutton.Text = "View/Edit";
             recipeCRUDbutton.UseVisualStyleBackColor = true;
@@ -105,9 +111,10 @@
             // 
             // searchButton
             // 
+            searchButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             searchButton.Location = new Point(278, 256);
             searchButton.Name = "searchButton";
-            searchButton.Size = new Size(100, 30);
+            searchButton.Size = new Size(105, 30);
             searchButton.TabIndex = 4;
             searchButton.Text = "Search";
             searchButton.UseVisualStyleBackColor = true;
@@ -115,6 +122,7 @@
             // 
             // welcomeImage
             // 
+            welcomeImage.BorderStyle = BorderStyle.FixedSingle;
             welcomeImage.Image = (Image)resources.GetObject("welcomeImage.Image");
             welcomeImage.Location = new Point(128, 27);
             welcomeImage.Name = "welcomeImage";
@@ -125,9 +133,10 @@
             // 
             // newRecipeButton
             // 
+            newRecipeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             newRecipeButton.Location = new Point(395, 256);
             newRecipeButton.Name = "newRecipeButton";
-            newRecipeButton.Size = new Size(100, 30);
+            newRecipeButton.Size = new Size(105, 30);
             newRecipeButton.TabIndex = 6;
             newRecipeButton.Text = "Add New";
             newRecipeButton.UseVisualStyleBackColor = true;
@@ -136,9 +145,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(286, 313);
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(280, 313);
             label1.Name = "label1";
-            label1.Size = new Size(85, 15);
+            label1.Size = new Size(96, 17);
             label1.TabIndex = 7;
             label1.Text = "Select a Recipe";
             // 

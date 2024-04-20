@@ -25,6 +25,16 @@ namespace Recipe_Management_System
             string ingredientsFilePath = Path.Combine(appFolder, "recipes", "Ingredients.csv");
             string directionsFilePath = Path.Combine(appFolder, "recipes", "Directions.csv");
 
+            if (!string.IsNullOrEmpty(recipeFilePath) && !string.IsNullOrEmpty(ingredientsFilePath) && !string.IsNullOrEmpty(directionsFilePath))
+            {
+                // Sends the file paths to the CSVManager for use in updating the files
+                CSVManager.InitializeFilePaths(recipeFilePath, ingredientsFilePath, directionsFilePath);
+            }
+            else
+            {
+                Console.WriteLine("Missing one or more file paths");
+            }
+
             // Process the data from the recipe, ingredients, and directions CSV files
             static List<Recipe> ReadDataFromFiles(string recipeFilePath, string ingredientsFilePath, string directionsFilePath)
             {

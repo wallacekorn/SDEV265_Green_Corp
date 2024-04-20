@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingleRecipe));
             recipeExitButton = new Button();
             deleteRecipeButton = new Button();
@@ -45,15 +46,17 @@
             directionsColumn = new DataGridViewTextBoxColumn();
             ingredientsDataGrid = new DataGridView();
             ingredientsColumn = new DataGridViewTextBoxColumn();
+            clearButton = new Button();
             ((System.ComponentModel.ISupportInitialize)directionsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // recipeExitButton
             // 
+            recipeExitButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             recipeExitButton.Location = new Point(665, 12);
             recipeExitButton.Name = "recipeExitButton";
-            recipeExitButton.Size = new Size(80, 24);
+            recipeExitButton.Size = new Size(85, 25);
             recipeExitButton.TabIndex = 0;
             recipeExitButton.Text = "Exit";
             recipeExitButton.UseVisualStyleBackColor = true;
@@ -61,16 +64,19 @@
             // 
             // deleteRecipeButton
             // 
-            deleteRecipeButton.Location = new Point(552, 370);
+            deleteRecipeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            deleteRecipeButton.Location = new Point(592, 370);
             deleteRecipeButton.Name = "deleteRecipeButton";
             deleteRecipeButton.Size = new Size(100, 30);
             deleteRecipeButton.TabIndex = 1;
             deleteRecipeButton.Text = "Delete";
             deleteRecipeButton.UseVisualStyleBackColor = true;
+            deleteRecipeButton.Click += deleteRecipeButton_Click;
             // 
             // editRecipeButton
             // 
-            editRecipeButton.Location = new Point(427, 370);
+            editRecipeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            editRecipeButton.Location = new Point(576, 69);
             editRecipeButton.Name = "editRecipeButton";
             editRecipeButton.Size = new Size(100, 30);
             editRecipeButton.TabIndex = 2;
@@ -80,46 +86,52 @@
             // 
             // saveRecipeButton
             // 
-            saveRecipeButton.Location = new Point(302, 370);
+            saveRecipeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            saveRecipeButton.Location = new Point(342, 370);
             saveRecipeButton.Name = "saveRecipeButton";
             saveRecipeButton.Size = new Size(100, 30);
             saveRecipeButton.TabIndex = 3;
             saveRecipeButton.Text = "Save";
             saveRecipeButton.UseVisualStyleBackColor = true;
+            saveRecipeButton.Click += saveRecipeButton_Click;
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new Point(106, 91);
+            nameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            nameLabel.Location = new Point(90, 73);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(42, 15);
+            nameLabel.Size = new Size(55, 21);
             nameLabel.TabIndex = 4;
             nameLabel.Text = "Name:";
             // 
             // ingredientsLabel
             // 
             ingredientsLabel.AutoSize = true;
-            ingredientsLabel.Location = new Point(86, 137);
+            ingredientsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ingredientsLabel.Location = new Point(46, 136);
             ingredientsLabel.Name = "ingredientsLabel";
-            ingredientsLabel.Size = new Size(69, 15);
+            ingredientsLabel.Size = new Size(91, 21);
             ingredientsLabel.TabIndex = 5;
             ingredientsLabel.Text = "Ingredients:";
             // 
             // directionsLabel
             // 
             directionsLabel.AutoSize = true;
-            directionsLabel.Location = new Point(302, 137);
+            directionsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            directionsLabel.Location = new Point(302, 136);
             directionsLabel.Name = "directionsLabel";
-            directionsLabel.Size = new Size(63, 15);
+            directionsLabel.Size = new Size(83, 21);
             directionsLabel.TabIndex = 6;
             directionsLabel.Text = "Directions:";
             // 
             // mealTypeLabel
             // 
             mealTypeLabel.AutoSize = true;
-            mealTypeLabel.Location = new Point(375, 90);
+            mealTypeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mealTypeLabel.Location = new Point(326, 73);
             mealTypeLabel.Name = "mealTypeLabel";
-            mealTypeLabel.Size = new Size(63, 15);
+            mealTypeLabel.Size = new Size(83, 21);
             mealTypeLabel.TabIndex = 7;
             mealTypeLabel.Text = "Meal Type:";
             // 
@@ -128,14 +140,14 @@
             mealTypeDropdown.Enabled = false;
             mealTypeDropdown.FormattingEnabled = true;
             mealTypeDropdown.Items.AddRange(new object[] { "Breakfast", "Lunch", "Dinner", "Dessert" });
-            mealTypeDropdown.Location = new Point(463, 87);
+            mealTypeDropdown.Location = new Point(415, 73);
             mealTypeDropdown.Name = "mealTypeDropdown";
             mealTypeDropdown.Size = new Size(121, 23);
             mealTypeDropdown.TabIndex = 8;
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(194, 87);
+            nameTextBox.Location = new Point(151, 73);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.ReadOnly = true;
             nameTextBox.Size = new Size(121, 23);
@@ -148,47 +160,58 @@
             directionsDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 192, 255);
             directionsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            directionsDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             directionsDataGrid.BackgroundColor = SystemColors.ButtonFace;
             directionsDataGrid.BorderStyle = BorderStyle.Fixed3D;
             directionsDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             directionsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            directionsDataGrid.ColumnHeadersVisible = false;
             directionsDataGrid.Columns.AddRange(new DataGridViewColumn[] { directionsColumn });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            directionsDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             directionsDataGrid.GridColor = SystemColors.Window;
             directionsDataGrid.Location = new Point(302, 155);
             directionsDataGrid.Name = "directionsDataGrid";
             directionsDataGrid.ReadOnly = true;
             directionsDataGrid.RowHeadersVisible = false;
             directionsDataGrid.RowHeadersWidth = 20;
-            directionsDataGrid.ScrollBars = ScrollBars.Horizontal;
-            directionsDataGrid.Size = new Size(350, 198);
+            directionsDataGrid.ScrollBars = ScrollBars.Vertical;
+            directionsDataGrid.Size = new Size(428, 198);
             directionsDataGrid.TabIndex = 10;
             // 
             // directionsColumn
             // 
-            directionsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            directionsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             directionsColumn.DividerWidth = 1;
             directionsColumn.HeaderText = "";
-            directionsColumn.MinimumWidth = 346;
+            directionsColumn.MinimumWidth = 347;
             directionsColumn.Name = "directionsColumn";
             directionsColumn.ReadOnly = true;
             directionsColumn.Resizable = DataGridViewTriState.False;
-            directionsColumn.Width = 346;
             // 
             // ingredientsDataGrid
             // 
+            ingredientsDataGrid.AllowUserToResizeColumns = false;
             ingredientsDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(192, 192, 255);
-            ingredientsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(192, 192, 255);
+            ingredientsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            ingredientsDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ingredientsDataGrid.BackgroundColor = SystemColors.ButtonFace;
             ingredientsDataGrid.BorderStyle = BorderStyle.Fixed3D;
             ingredientsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ingredientsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ingredientsColumn });
             ingredientsDataGrid.GridColor = SystemColors.Window;
-            ingredientsDataGrid.Location = new Point(86, 155);
+            ingredientsDataGrid.Location = new Point(46, 155);
             ingredientsDataGrid.Name = "ingredientsDataGrid";
             ingredientsDataGrid.ReadOnly = true;
             ingredientsDataGrid.RowHeadersVisible = false;
-            ingredientsDataGrid.Size = new Size(186, 245);
+            ingredientsDataGrid.Size = new Size(226, 245);
             ingredientsDataGrid.TabIndex = 11;
             // 
             // ingredientsColumn
@@ -201,12 +224,24 @@
             ingredientsColumn.ReadOnly = true;
             ingredientsColumn.Resizable = DataGridViewTriState.False;
             // 
+            // clearButton
+            // 
+            clearButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clearButton.Location = new Point(469, 370);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new Size(100, 30);
+            clearButton.TabIndex = 12;
+            clearButton.Text = "Clear";
+            clearButton.UseVisualStyleBackColor = true;
+            clearButton.Click += clearButton_Click;
+            // 
             // SingleRecipe
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(757, 445);
+            Controls.Add(clearButton);
             Controls.Add(ingredientsDataGrid);
             Controls.Add(directionsDataGrid);
             Controls.Add(nameTextBox);
@@ -219,6 +254,7 @@
             Controls.Add(editRecipeButton);
             Controls.Add(deleteRecipeButton);
             Controls.Add(recipeExitButton);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SingleRecipe";
             Text = "RMS - Single Recipe";
@@ -243,7 +279,8 @@
         private TextBox nameTextBox;
         private DataGridView directionsDataGrid;
         private DataGridView ingredientsDataGrid;
-        private DataGridViewTextBoxColumn directionsColumn;
         private DataGridViewTextBoxColumn ingredientsColumn;
+        private Button clearButton;
+        private DataGridViewTextBoxColumn directionsColumn;
     }
 }
