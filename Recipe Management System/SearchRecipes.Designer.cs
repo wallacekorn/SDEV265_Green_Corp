@@ -31,10 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchRecipes));
             searchExitButton = new Button();
             searchListBox = new ListBox();
-            textBox1 = new TextBox();
+            searchBar = new TextBox();
             label1 = new Label();
-            searchCRUDbutton = new Button();
             searchHeader = new Label();
+            searchButton = new Button();
+            nameRadioButton = new RadioButton();
+            ingredientRadioButton = new RadioButton();
+            typeComboBox = new ComboBox();
+            mealTypeRadioButton = new RadioButton();
+            searchViewRecipe = new Button();
             SuspendLayout();
             // 
             // searchExitButton
@@ -49,49 +54,107 @@
             // 
             // searchListBox
             // 
+            searchListBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             searchListBox.FormattingEnabled = true;
-            searchListBox.ItemHeight = 15;
-            searchListBox.Location = new Point(63, 158);
+            searchListBox.ItemHeight = 17;
+            searchListBox.Location = new Point(52, 158);
             searchListBox.Name = "searchListBox";
-            searchListBox.Size = new Size(312, 199);
+            searchListBox.Size = new Size(323, 191);
             searchListBox.TabIndex = 1;
             // 
-            // textBox1
+            // searchBar
             // 
-            textBox1.Location = new Point(204, 118);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 2;
+            searchBar.BorderStyle = BorderStyle.FixedSingle;
+            searchBar.Location = new Point(225, 76);
+            searchBar.MinimumSize = new Size(0, 25);
+            searchBar.Name = "searchBar";
+            searchBar.Size = new Size(140, 25);
+            searchBar.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(63, 121);
+            label1.Location = new Point(52, 56);
             label1.Name = "label1";
-            label1.Size = new Size(131, 15);
+            label1.Size = new Size(61, 15);
             label1.TabIndex = 3;
-            label1.Text = "Search by Recipe Name";
-            // 
-            // searchCRUDbutton
-            // 
-            searchCRUDbutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchCRUDbutton.Location = new Point(275, 380);
-            searchCRUDbutton.Name = "searchCRUDbutton";
-            searchCRUDbutton.Size = new Size(100, 30);
-            searchCRUDbutton.TabIndex = 4;
-            searchCRUDbutton.Text = "View/Edit";
-            searchCRUDbutton.UseVisualStyleBackColor = true;
-            searchCRUDbutton.Click += searchCRUDbutton_Click;
+            label1.Text = "Search by:";
             // 
             // searchHeader
             // 
             searchHeader.AutoSize = true;
             searchHeader.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            searchHeader.Location = new Point(63, 55);
+            searchHeader.Location = new Point(39, 12);
             searchHeader.Name = "searchHeader";
             searchHeader.Size = new Size(89, 32);
             searchHeader.TabIndex = 5;
             searchHeader.Text = "Search";
+            // 
+            // searchButton
+            // 
+            searchButton.Location = new Point(245, 109);
+            searchButton.Name = "searchButton";
+            searchButton.Size = new Size(100, 30);
+            searchButton.TabIndex = 6;
+            searchButton.Text = "Search";
+            searchButton.UseVisualStyleBackColor = true;
+            searchButton.Click += searchButton_Click;
+            // 
+            // nameRadioButton
+            // 
+            nameRadioButton.AutoSize = true;
+            nameRadioButton.Location = new Point(103, 74);
+            nameRadioButton.Name = "nameRadioButton";
+            nameRadioButton.Size = new Size(95, 19);
+            nameRadioButton.TabIndex = 7;
+            nameRadioButton.TabStop = true;
+            nameRadioButton.Text = "Recipe Name";
+            nameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ingredientRadioButton
+            // 
+            ingredientRadioButton.AutoSize = true;
+            ingredientRadioButton.Location = new Point(103, 97);
+            ingredientRadioButton.Name = "ingredientRadioButton";
+            ingredientRadioButton.Size = new Size(79, 19);
+            ingredientRadioButton.TabIndex = 8;
+            ingredientRadioButton.TabStop = true;
+            ingredientRadioButton.Text = "Ingredient";
+            ingredientRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // typeComboBox
+            // 
+            typeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            typeComboBox.DropDownWidth = 75;
+            typeComboBox.FormattingEnabled = true;
+            typeComboBox.Items.AddRange(new object[] { "Breakfast", "Lunch", "Dinner", "Dessert" });
+            typeComboBox.Location = new Point(121, 118);
+            typeComboBox.Name = "typeComboBox";
+            typeComboBox.Size = new Size(75, 23);
+            typeComboBox.TabIndex = 10;
+            typeComboBox.Click += typeComboBox_Click;
+            // 
+            // mealTypeRadioButton
+            // 
+            mealTypeRadioButton.AutoSize = true;
+            mealTypeRadioButton.Location = new Point(103, 120);
+            mealTypeRadioButton.Name = "mealTypeRadioButton";
+            mealTypeRadioButton.Size = new Size(14, 13);
+            mealTypeRadioButton.TabIndex = 11;
+            mealTypeRadioButton.TabStop = true;
+            mealTypeRadioButton.UseVisualStyleBackColor = true;
+            mealTypeRadioButton.CheckedChanged += mealTypeRadioButton_CheckedChanged;
+            // 
+            // searchViewRecipe
+            // 
+            searchViewRecipe.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchViewRecipe.Location = new Point(275, 365);
+            searchViewRecipe.Name = "searchViewRecipe";
+            searchViewRecipe.Size = new Size(100, 30);
+            searchViewRecipe.TabIndex = 12;
+            searchViewRecipe.Text = "View/Edit";
+            searchViewRecipe.UseVisualStyleBackColor = true;
+            searchViewRecipe.Click += searchViewRecipe_Click;
             // 
             // SearchRecipes
             // 
@@ -99,10 +162,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(441, 450);
+            Controls.Add(searchViewRecipe);
+            Controls.Add(mealTypeRadioButton);
+            Controls.Add(typeComboBox);
+            Controls.Add(ingredientRadioButton);
+            Controls.Add(nameRadioButton);
+            Controls.Add(searchButton);
             Controls.Add(searchHeader);
-            Controls.Add(searchCRUDbutton);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(searchBar);
             Controls.Add(searchListBox);
             Controls.Add(searchExitButton);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -117,9 +185,14 @@
 
         private Button searchExitButton;
         private ListBox searchListBox;
-        private TextBox textBox1;
+        private TextBox searchBar;
         private Label label1;
-        private Button searchCRUDbutton;
         private Label searchHeader;
+        private Button searchButton;
+        private RadioButton nameRadioButton;
+        private RadioButton ingredientRadioButton;
+        private ComboBox typeComboBox;
+        private RadioButton mealTypeRadioButton;
+        private Button searchViewRecipe;
     }
 }

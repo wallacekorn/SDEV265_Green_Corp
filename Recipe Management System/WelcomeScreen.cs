@@ -34,7 +34,7 @@ namespace Recipe_Management_System
         private void searchButton_Click(object sender, EventArgs e)
         {
             // Create an instance of Search page
-            SearchRecipes SearchRecipesPage = new SearchRecipes();
+            SearchRecipes SearchRecipesPage = new SearchRecipes(recipes);
 
             // Show the Search Page
             SearchRecipesPage.Show();
