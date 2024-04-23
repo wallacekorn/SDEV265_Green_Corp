@@ -44,29 +44,38 @@ namespace Recipe_Management_System
             string selectedMealType = "";
             if (mealTypeRadioButton.Checked)// If the mealTypeRadioButton is checked, 
             {
-                // then get the selected item from the typeComboBox and convert it to a string
-                selectedMealType = typeComboBox.SelectedItem.ToString();
+                if (typeComboBox.SelectedItem != null)
+                {
+                    // then get the selected item from the typeComboBox and convert it to a string
+                    selectedMealType = typeComboBox.SelectedItem.ToString();
+                }
+                else {
+                    MessageBox.Show("Please select a meal type");
+                }
             }
 
-            foreach (Recipe recipe in recipes)
+            if (recipes != null)
             {
-                if (nameRadioButton.Checked && recipe.Name.ToLower().Contains(userSearch))
+                foreach (Recipe recipe in recipes)
                 {
-                    returnedRecipes.Add(recipe);
-                }
-                else if (ingredientRadioButton.Checked)
-                {
-                    foreach (string ingredient in recipe.Ingredients)
+                    if (nameRadioButton.Checked && recipe.Name.ToLower().Contains(userSearch))
                     {
-                        if (ingredient.ToLower().Contains(userSearch))
+                        returnedRecipes.Add(recipe);
+                    }
+                    else if (ingredientRadioButton.Checked)
+                    {
+                        foreach (string ingredient in recipe.Ingredients)
                         {
-                            returnedRecipes.Add(recipe);
+                            if (ingredient.ToLower().Contains(userSearch))
+                            {
+                                returnedRecipes.Add(recipe);
+                            }
                         }
                     }
-                }
-                else if (mealTypeRadioButton.Checked && recipe.MealType.ToLower() == selectedMealType.ToLower())
-                {
-                    returnedRecipes.Add(recipe);
+                    else if (mealTypeRadioButton.Checked && recipe.MealType.ToLower() == selectedMealType.ToLower())
+                    {
+                        returnedRecipes.Add(recipe);
+                    }
                 }
             }
             if (returnedRecipes.Count == 0)
@@ -112,6 +121,7 @@ namespace Recipe_Management_System
         {
             // Checks the mealType radio button if the combobox is clicked
             mealTypeRadioButton.Checked = true;
+            searchViewRecipe_Click(sender, e); // automatically clicks the button since it feels more intuitive
         }
 
         private void mealTypeRadioButton_CheckedChanged(object sender, EventArgs e)

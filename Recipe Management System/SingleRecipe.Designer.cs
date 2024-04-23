@@ -47,6 +47,7 @@
             ingredientsDataGrid = new DataGridView();
             ingredientsColumn = new DataGridViewTextBoxColumn();
             clearButton = new Button();
+            headerLabelARecipe = new Label();
             ((System.ComponentModel.ISupportInitialize)directionsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).BeginInit();
             SuspendLayout();
@@ -76,7 +77,7 @@
             // editRecipeButton
             // 
             editRecipeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            editRecipeButton.Location = new Point(576, 69);
+            editRecipeButton.Location = new Point(576, 76);
             editRecipeButton.Name = "editRecipeButton";
             editRecipeButton.Size = new Size(100, 30);
             editRecipeButton.TabIndex = 2;
@@ -99,7 +100,7 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(90, 73);
+            nameLabel.Location = new Point(90, 80);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(55, 21);
             nameLabel.TabIndex = 4;
@@ -129,7 +130,7 @@
             // 
             mealTypeLabel.AutoSize = true;
             mealTypeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mealTypeLabel.Location = new Point(326, 73);
+            mealTypeLabel.Location = new Point(326, 80);
             mealTypeLabel.Name = "mealTypeLabel";
             mealTypeLabel.Size = new Size(83, 21);
             mealTypeLabel.TabIndex = 7;
@@ -137,17 +138,18 @@
             // 
             // mealTypeDropdown
             // 
+            mealTypeDropdown.DropDownStyle = ComboBoxStyle.DropDownList;
             mealTypeDropdown.Enabled = false;
             mealTypeDropdown.FormattingEnabled = true;
             mealTypeDropdown.Items.AddRange(new object[] { "Breakfast", "Lunch", "Dinner", "Dessert" });
-            mealTypeDropdown.Location = new Point(415, 73);
+            mealTypeDropdown.Location = new Point(415, 80);
             mealTypeDropdown.Name = "mealTypeDropdown";
             mealTypeDropdown.Size = new Size(121, 23);
             mealTypeDropdown.TabIndex = 8;
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(151, 73);
+            nameTextBox.Location = new Point(151, 80);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.ReadOnly = true;
             nameTextBox.Size = new Size(121, 23);
@@ -235,12 +237,23 @@
             clearButton.UseVisualStyleBackColor = true;
             clearButton.Click += clearButton_Click;
             // 
+            // headerLabelARecipe
+            // 
+            headerLabelARecipe.AutoSize = true;
+            headerLabelARecipe.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            headerLabelARecipe.Location = new Point(34, 19);
+            headerLabelARecipe.Name = "headerLabelARecipe";
+            headerLabelARecipe.Size = new Size(206, 32);
+            headerLabelARecipe.TabIndex = 13;
+            headerLabelARecipe.Text = "View/Edit Recipe";
+            // 
             // SingleRecipe
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(757, 445);
+            Controls.Add(headerLabelARecipe);
             Controls.Add(clearButton);
             Controls.Add(ingredientsDataGrid);
             Controls.Add(directionsDataGrid);
@@ -257,7 +270,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SingleRecipe";
-            Text = "RMS - Single Recipe";
+            Text = "RMS - View/Edit Recipe";
             Load += SingleRecipe_Load;
             ((System.ComponentModel.ISupportInitialize)directionsDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).EndInit();
@@ -282,5 +295,6 @@
         private DataGridViewTextBoxColumn ingredientsColumn;
         private Button clearButton;
         private DataGridViewTextBoxColumn directionsColumn;
+        private Label headerLabelARecipe;
     }
 }

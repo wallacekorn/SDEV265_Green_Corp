@@ -79,6 +79,7 @@
             loadMenuItem.Name = "loadMenuItem";
             loadMenuItem.Size = new Size(100, 22);
             loadMenuItem.Text = "Load";
+            loadMenuItem.Click += loadMenuItem_Click;
             // 
             // exitMenuItem
             // 
@@ -166,6 +167,7 @@
             Controls.Add(instructionsButton);
             Controls.Add(recipeComboBox);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "WelcomeScreen";

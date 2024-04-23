@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Collections.Generic;
 
 namespace Recipe_Management_System
@@ -93,6 +94,12 @@ namespace Recipe_Management_System
             SingleRecipePage.Show();
         }
 
+        public void UpdateRecipes(List<Recipe> newRecipes)
+        {
+            this.recipes = newRecipes;  // replaces the recipes object
+            BuildComboBox(this.recipes); // rebuilds the combo box
+
+        }
         public void BuildComboBox(List<Recipe> recipes)
         {
             // Clear existing items in the combo box
@@ -102,6 +109,53 @@ namespace Recipe_Management_System
             foreach (var recipe in recipes)
             {
                 recipeComboBox.Items.Add(recipe.Name);
+            }
+        }
+
+        private void loadMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                string appFolder = AppDomain.CurrentDomain.BaseDirectory;
+                string recipesDirectory = Path.Combine(appFolder, "recipes");
+
+                openFileDialog.InitialDirectory = recipesDirectory; // sets the default directory
+                openFileDialog.Filter = "CSV files (*.csv)|*.csv"; // Filter for CSV files
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string userSelectedFilepath = openFileDialog.FileName;
+                    if (userSelectedFilepath != null)
+                    {
+                        string recipesFilePath = userSelectedFilepath;
+                        string directoryPath = Path.GetDirectoryName(userSelectedFilepath);
+                        string ingredientsFilePath = Path.Combine(directoryPath, "Ingredients.csv");
+                        string directionsFilePath = Path.Combine(directoryPath, "Directions.csv");
+
+                        // Checks if the directions and ingredients files are present and named correctly
+                        if (!File.Exists(ingredientsFilePath))
+                        {
+                            MessageBox.Show("The file 'Ingredients.csv' was not found in the selected directory. Files must be named 'Ingredients.csv' and 'Directions.csv', respectively.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;  // stops if the file is not found
+                        }
+                        if (!File.Exists(directionsFilePath))
+                        {
+                            MessageBox.Show("The file 'Directions.csv' was not found in the selected directory. Files must be named 'Ingredients.csv' and 'Directions.csv', respectively.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;  // stops if the file is not found
+                        }
+
+                        // Builds a list of recipe objects from the selected files and loads them into the combo box
+                        List<Recipe> loadedRecipes = CSVManager.ReadDataFromFiles(recipesFilePath, ingredientsFilePath, directionsFilePath);
+                        this.recipes = loadedRecipes;
+                        BuildComboBox(recipes);
+
+                        CSVManager.InitializeFilePaths(userSelectedFilepath, ingredientsFilePath, directionsFilePath); // re-establishes the filepaths
+                    }
+                    else
+                    {
+                        MessageBox.Show("No file was selected.", "File Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
         }
     }

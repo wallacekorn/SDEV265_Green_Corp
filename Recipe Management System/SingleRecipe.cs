@@ -206,8 +206,15 @@ namespace Recipe_Management_System
 
         private void saveRecipeButton_Click(object sender, EventArgs e)
         {
+            // Checks if the name text box is empty
+            if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a recipe name to save", "No name provided", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Retrieve the name and meal type from the input fields
-            string name = nameTextBox.Text;
+            string name = CSVManager.ReplaceTheCommas(nameTextBox.Text); // stores name, removes commas to assure correct parsing later
             string mealType = mealTypeDropdown.SelectedItem.ToString();
 
             // Create a new Recipe object using the data
@@ -221,7 +228,7 @@ namespace Recipe_Management_System
                     string ingredient = row.Cells[0].Value?.ToString();
                     if (!string.IsNullOrEmpty(ingredient))
                     {
-                        newRecipe.AddIngredient(ingredient);
+                        newRecipe.AddIngredient(CSVManager.ReplaceTheCommas(ingredient)); // adds ingredient to list, removes commas to assure correct parsing later
                     }
                 }
             }
@@ -234,7 +241,7 @@ namespace Recipe_Management_System
                     string direction = row.Cells[0].Value?.ToString();
                     if (!string.IsNullOrEmpty(direction))
                     {
-                        newRecipe.AddDirection(direction);
+                        newRecipe.AddDirection(CSVManager.ReplaceTheCommas(direction)); // adds direction to list, removes commas to assure correct parsing later
                     }
                 }
             }
@@ -242,6 +249,11 @@ namespace Recipe_Management_System
             // Check if a recipe with the same name already exists in the recipes object list
             string lowercaseNewRecipeName = newRecipe.Name.ToLower();
             Recipe existingRecipe = null;
+
+            if (this.recipes == null)
+            {
+                this.recipes = new List<Recipe>();  // Initialize if its null
+            }
 
             foreach (Recipe recipe in recipes)
             {
@@ -264,17 +276,15 @@ namespace Recipe_Management_System
                 recipes[index] = newRecipe;
             }
 
-            // update combo box
+            // update combo box and recipes object
             WelcomeScreen welcomeScreen = Application.OpenForms.OfType<WelcomeScreen>().FirstOrDefault();
             if (welcomeScreen != null)
             {
-                welcomeScreen.BuildComboBox(recipes); // Refresh the combo box on Welcome Screen
+                welcomeScreen.UpdateRecipes(recipes);
             }
 
             // Updates the CSV files with the new list of recipes
             CSVManager.UpdateCSVFiles(recipes);
-            MessageBox.Show("Recipe Saved!");
-            this.Close(); // then close the Single Recipes form after deletion
         }
     }
 }

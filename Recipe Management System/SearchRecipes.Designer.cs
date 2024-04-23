@@ -92,7 +92,7 @@
             // 
             // searchButton
             // 
-            searchButton.Location = new Point(245, 109);
+            searchButton.Location = new Point(245, 113);
             searchButton.Name = "searchButton";
             searchButton.Size = new Size(100, 30);
             searchButton.TabIndex = 6;
@@ -137,7 +137,7 @@
             // mealTypeRadioButton
             // 
             mealTypeRadioButton.AutoSize = true;
-            mealTypeRadioButton.Location = new Point(103, 120);
+            mealTypeRadioButton.Location = new Point(103, 122);
             mealTypeRadioButton.Name = "mealTypeRadioButton";
             mealTypeRadioButton.Size = new Size(14, 13);
             mealTypeRadioButton.TabIndex = 11;
