@@ -43,11 +43,11 @@
             mealTypeDropdown = new ComboBox();
             nameTextBox = new TextBox();
             directionsDataGrid = new DataGridView();
-            directionsColumn = new DataGridViewTextBoxColumn();
             ingredientsDataGrid = new DataGridView();
             ingredientsColumn = new DataGridViewTextBoxColumn();
             clearButton = new Button();
             headerLabelARecipe = new Label();
+            directionsColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)directionsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ingredientsDataGrid).BeginInit();
             SuspendLayout();
@@ -150,6 +150,7 @@
             // nameTextBox
             // 
             nameTextBox.Location = new Point(151, 80);
+            nameTextBox.MaxLength = 50;
             nameTextBox.Name = "nameTextBox";
             nameTextBox.ReadOnly = true;
             nameTextBox.Size = new Size(121, 23);
@@ -187,16 +188,6 @@
             directionsDataGrid.Size = new Size(428, 198);
             directionsDataGrid.TabIndex = 10;
             // 
-            // directionsColumn
-            // 
-            directionsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            directionsColumn.DividerWidth = 1;
-            directionsColumn.HeaderText = "";
-            directionsColumn.MinimumWidth = 347;
-            directionsColumn.Name = "directionsColumn";
-            directionsColumn.ReadOnly = true;
-            directionsColumn.Resizable = DataGridViewTriState.False;
-            // 
             // ingredientsDataGrid
             // 
             ingredientsDataGrid.AllowUserToResizeColumns = false;
@@ -221,6 +212,7 @@
             ingredientsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ingredientsColumn.DividerWidth = 1;
             ingredientsColumn.HeaderText = "";
+            ingredientsColumn.MaxInputLength = 100;
             ingredientsColumn.MinimumWidth = 134;
             ingredientsColumn.Name = "ingredientsColumn";
             ingredientsColumn.ReadOnly = true;
@@ -246,6 +238,17 @@
             headerLabelARecipe.Size = new Size(206, 32);
             headerLabelARecipe.TabIndex = 13;
             headerLabelARecipe.Text = "View/Edit Recipe";
+            // 
+            // directionsColumn
+            // 
+            directionsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            directionsColumn.DividerWidth = 1;
+            directionsColumn.HeaderText = "";
+            directionsColumn.MaxInputLength = 100;
+            directionsColumn.MinimumWidth = 347;
+            directionsColumn.Name = "directionsColumn";
+            directionsColumn.ReadOnly = true;
+            directionsColumn.Resizable = DataGridViewTriState.False;
             // 
             // SingleRecipe
             // 
@@ -292,9 +295,9 @@
         private TextBox nameTextBox;
         private DataGridView directionsDataGrid;
         private DataGridView ingredientsDataGrid;
-        private DataGridViewTextBoxColumn ingredientsColumn;
         private Button clearButton;
-        private DataGridViewTextBoxColumn directionsColumn;
         private Label headerLabelARecipe;
+        private DataGridViewTextBoxColumn ingredientsColumn;
+        private DataGridViewTextBoxColumn directionsColumn;
     }
 }

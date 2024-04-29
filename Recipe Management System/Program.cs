@@ -1,3 +1,11 @@
+/*
+Group: Green Group
+    Date: 05/10/2023
+    Program Title: Green Corporation - Recipes Management System
+    Purpose: Allows for the storage and editing of Recipe information for the Green corporation.
+             Supports CRUD functions for Recipe objects, that contain Name, MealType, Ingredients, and Directions fields. 
+*/
+
 namespace Recipe_Management_System
 {
     internal static class Program
@@ -8,24 +16,25 @@ namespace Recipe_Management_System
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            LoadRecipeFileAndWelcomeScreen();
+            ApplicationConfiguration.Initialize(); // Intitializes the application configuration
+            LoadRecipeFileAndWelcomeScreen();      // Loads the application
         }
 
-        // Loads the recipe file and initializes the WelcomeScreen/application
         static void LoadRecipeFileAndWelcomeScreen()
         {
+            /*
+                Automatically loads the recipe, ingredients, and directions csv files if they are in the default location.
+                Then boots the Welcome Screen form - the initial viewport for the Recipes management system application
+             */
 
-            string appFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string appFolder = AppDomain.CurrentDomain.BaseDirectory; // finds the directory that the application is in and stores it
 
             // Finds the default filepath and filename to get the .csv filepaths
-            string recipeFilePath = Path.Combine(appFolder, "recipes", "Recipes.csv");
-            string ingredientsFilePath = Path.Combine(appFolder, "recipes", "Ingredients.csv");
-            string directionsFilePath = Path.Combine(appFolder, "recipes", "Directions.csv");
+            string recipeFilePath = Path.Combine(appFolder, "recipes", "Recipes.csv");          // Checks the appFolder/recipes/recipes.csv to automatically load data if present
+            string ingredientsFilePath = Path.Combine(appFolder, "recipes", "Ingredients.csv"); // Checks the appFolder/recipes/ingredients.csv to automatically load data if present
+            string directionsFilePath = Path.Combine(appFolder, "recipes", "Directions.csv");   // Checks the appFolder/recipes/directions.csv to automatically load data if present
 
-            if (!string.IsNullOrEmpty(recipeFilePath) && !string.IsNullOrEmpty(ingredientsFilePath) && !string.IsNullOrEmpty(directionsFilePath))
+            if (!string.IsNullOrEmpty(recipeFilePath) && !string.IsNullOrEmpty(ingredientsFilePath) && !string.IsNullOrEmpty(directionsFilePath)) // if default files are found
             {
                 // Sends the file paths to the CSVManager for use in updating the files
                 CSVManager.InitializeFilePaths(recipeFilePath, ingredientsFilePath, directionsFilePath);

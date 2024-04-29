@@ -14,12 +14,14 @@ namespace Recipe_Management_System
     {
         public Instructions()
         {
+            /* Initializes the Instructions form */
+
             InitializeComponent();
         }
 
         private void instructionsExitButton_Click(object sender, EventArgs e)
         {
-            // Close the form on click
+            /* Close the instructions form on click */
             this.Close();
         }
     }

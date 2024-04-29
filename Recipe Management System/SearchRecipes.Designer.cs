@@ -66,6 +66,7 @@
             // 
             searchBar.BorderStyle = BorderStyle.FixedSingle;
             searchBar.Location = new Point(225, 76);
+            searchBar.MaxLength = 50;
             searchBar.MinimumSize = new Size(0, 25);
             searchBar.Name = "searchBar";
             searchBar.Size = new Size(140, 25);
